@@ -1,0 +1,32 @@
+{
+    "quickattack": {
+        "name": "quickattack", 
+        "type": "normal", 
+        "damage": 40
+    }, 
+    "flamethrower": {
+        "name": "flamethrower", 
+        "type": "fire", 
+        "damage": 90
+    }, 
+    "ember": {
+        "name": "ember", 
+        "type": "fire", 
+        "damage": 40
+    }, 
+    "thunderbolt": {
+        "name": "thunderbolt", 
+        "type": "electric", 
+        "damage": 40
+    }, 
+    "razorleaf": {
+        "name": "razorleaf", 
+        "type": "grass", 
+        "damage": 55
+    },
+    "": {
+        "name": "", 
+        "type": "", 
+        "damage": 0
+    }
+}

@@ -1,178 +1,5 @@
 import random
-
-effectiveness = {
-    "normal" : {
-        "weakness" : ["fighting"],
-        "resistance" : [],
-        "immunity" : ["ghost"]
-    },
-    "fire" : {
-        "weakness" :  ["ground", "rock", "water"],
-        "resistance" : ["fire","grass","ice","bug","steel","fairy"],
-        "immunity" : None
-    },
-    "water" : {
-        "weakness" :  ["grass", "electric"],
-        "resistance" : ["fire", "water", "ice", "steel"],
-        "immunity" : None
-    },
-    "electric" : {
-        "weakness" :  ["ground"],
-        "resistance" : ["electric", "flying", "steel"],
-        "immunity" : None
-    },
-    "grass" : {
-        "weakness" :  ["fire","bug","flying"],
-        "resistance" : ["water", "electric", "grass", "ground"],
-        "immunity" : None
-    },
-    "ice" : {
-        "weakness" : ["fire", "fighting","rock","steel"],
-        "resistance" : ["ice"],
-        "immunity" : None,
-    },
-    "fighting" : {
-        "weakness" : ["flying", "psychic", "fairy"],
-        "resistance" : ["bug", "rock"," dark"],
-        "immunity" : None
-    },
-    "poison" : {
-        "weakness" : ["ground","psychic"],
-        "resistance" : ["grass","fighting","poison","bug","fairy"],
-        "immunity" : None
-    },
-    "ground" : {
-        "weakness" : ["water", "grass", "ice"],
-        "resistance" : ["poison", "rock"],
-        "immunity" : ["electric"]
-    },
-    "flying" : {
-        "weakness" :  ["electric", "rock", "ice"],
-        "resistance" : [],
-        "immunity" : ["ground"]
-    },
-    "psychic" : {
-        "weakness" : ["bug", "ghost", "dark"],
-        "resistance" : ["fighting", "psychic"],
-        "immunity" : None
-    },
-    "bug" : {
-        "weakness" : ["fire", "flying", "rock"],
-        "resistance" : ["grass", "fighting", "ground"],
-        "immunity" : None
-    },
-    "rock" : {
-        "weakness" : ["water", "grass", "fighting", "ground", "steel"],
-        "resistance" : ["normal", "fire", "poison", "flying"],
-        "immunity" : None
-    },
-    "ghost" : {
-        "weakness" : ["ghost", "dark"],
-        "resistance" : ["poison", "bug"],
-        "immunity" : ["normal", "fighting"]
-    },
-    "dragon" : {
-        "weakness" : ["ice", "dragon", "fairy"],
-        "resistance" : ["fire", "water", "electric", "grass"],
-        "immunity" : None
-    },
-    "dark" : {
-        "weakness" : ["fighting", "bug", "fairy"],
-        "resistance" : ["ghost", "dark"],
-        "immunity" : ["psychic"]
-    },
-    "steel" : {
-        "weakness" : ["fire", "fighting", "ground"],
-        "resistance" : ["normal", "grass", "ice", "flying", "psychic", "bug", "rock", "dragon", "steel", "fairy"],
-        "immunity" : ["poison"]
-    },
-    "fairy" : {
-        "weakness" : ["poison", "steel"],
-        "resistance" : ["fighting", "bug", "dark"],
-        "immunity" : ["dragon"]
-    },
-}
-
-moves = {
-    "quickattack" : {
-        "name" : "quickattack",
-        "type" : "normal",
-        "damage" : 40
-    },
-    "flamethrower" : {
-        "name" : "flamethrower",
-        "type" : "fire",
-        "damage" : 90,
-    },
-    "ember" :{
-        "name" : "ember",
-        "type" : "fire",
-        "damage" : 40,
-    },
-    "thunderbolt" :{
-        "name" : "thunderbolt",
-        "type" : "electric",
-        "damage" : 40,
-    },
-    "razorleaf" :{
-        "name" : "razorleaf",
-        "type" : "grass",
-        "damage" : 55,
-    },
-    "" :{
-        "name" : "",
-        "type" : "",
-        "damage" : 0,
-    },
-
-}
-
-pokedex = {
-    "Charmander" : {
-        "name" : "Charmander",
-        "id" : 4,
-        "type1" : "fire",
-        "type2" : None,
-        "stats" :{
-            "hp": 39,
-            "atk" : 52,
-            "def" : 43,
-            "sp-atk" : 60,
-            "sp-def" : 50,
-            "spd" : 65
-        }
-    },
-    
-    "Pikachu" : {
-        "name" : "Pikachu",
-        "id" : 25,
-        "type1" : "electric",
-        "type2" : None,
-        "stats" :{
-            "hp": 35,
-            "atk" : 55,
-            "def" : 40,
-            "sp-atk" : 50,
-            "sp-def" : 50,
-            "spd" : 90
-        }
-    },
-
-    "Bulbasaur" : {
-        "name" : "Bulbasaur",
-        "id" : 1,
-        "type1" : "grass",
-        "type2" : "poison",
-        "stats" :{
-            "hp": 45,
-            "atk" : 49,
-            "def" : 49,
-            "sp-atk" : 65,
-            "sp-def" : 65,
-            "spd" : 45
-        }
-    }
-}
+import json
 
 class Pokemon:
     def __init__(self, species, moveset):
@@ -263,27 +90,31 @@ def check_alive(first, second, first_move, second_move):
             return True
 
 if __name__ == "__main__" :
-    print("-----Pokemon Battle-----\n\n\n")
-    game = True
-    pikachu = Pokemon(pokedex["Pikachu"], [moves["quickattack"],moves["thunderbolt"]])
-    charmander = Pokemon(pokedex["Charmander"],[moves["flamethrower"],moves["ember"]])
-    bulbasaur = Pokemon(pokedex["Bulbasaur"],[moves["razorleaf"]])
-    player1 = Player("Player 1", [pikachu])
-    player2 = Player("Player 2", [charmander,bulbasaur])
-    while game == True:
-        print(player1.active.name + "   HP : " , player1.active.stats["hp"] , "\n\nvs\n\n" + player2.active.name + "   HP : " , player2.active.stats["hp"] , "\n")
-        
-        #Player 1 chooses Move
-        play1 = choose_move(player1.active)
-        #Player 2 Chooses Move
-        play2 = choose_move(player2.active)
-        #Faster Pokemon does Move
-        if player1.active.stats["spd"] > player2.active.stats["spd"]:
-            game = check_alive(player1, player2, play1, play2)
-        else :
-            game = check_alive(player2,player1,play2,play1)
-        # IF pokemon fainted change Pokemon
-        #Other Pokemon does move 
+    with open("effectiveness.json", "r") as e, open("pokedex.json", "r") as p, open("moves.json", "r") as m:
+        pokedex = json.load(p)
+        moves = json.load(m)
+        effectiveness = json.load(e)
+        print("-----Pokemon Battle-----\n\n\n")
+        game = True
+        pikachu = Pokemon(pokedex["Pikachu"], [moves["quickattack"],moves["thunderbolt"]])
+        charmander = Pokemon(pokedex["Charmander"],[moves["flamethrower"],moves["ember"]])
+        bulbasaur = Pokemon(pokedex["Bulbasaur"],[moves["razorleaf"]])
+        player1 = Player("Player 1", [pikachu])
+        player2 = Player("Player 2", [charmander,bulbasaur])
+        while game == True:
+            print(player1.active.name + "   HP : " , player1.active.stats["hp"] , "\n\nvs\n\n" + player2.active.name + "   HP : " , player2.active.stats["hp"] , "\n")
+            
+            #Player 1 chooses Move
+            play1 = choose_move(player1.active)
+            #Player 2 Chooses Move
+            play2 = choose_move(player2.active)
+            #Faster Pokemon does Move
+            if player1.active.stats["spd"] > player2.active.stats["spd"]:
+                game = check_alive(player1, player2, play1, play2)
+            else :
+                game = check_alive(player2,player1,play2,play1)
+            # IF pokemon fainted change Pokemon
+            #Other Pokemon does move 
         
 
 

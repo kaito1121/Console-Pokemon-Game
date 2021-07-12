@@ -1,0 +1,44 @@
+{
+    "Bulbasaur": {
+        "name": "Bulbasaur", 
+        "id": 1, 
+        "type1": "grass", 
+        "type2": "poison", 
+        "stats": {
+            "hp": 45, 
+            "atk": 49, 
+            "def": 49, 
+            "sp-atk": 65, 
+            "sp-def": 65, 
+            "spd": 45
+        }
+    },
+    "Charmander": {
+        "name": "Charmander", 
+        "id": 4, 
+        "type1": "fire", 
+        "type2": null, 
+        "stats": {
+            "hp": 39, 
+            "atk": 52, 
+            "def": 43, 
+            "sp-atk": 60, 
+            "sp-def": 50, 
+            "spd": 65
+        }
+    }, 
+    "Pikachu": {
+        "name": "Pikachu", 
+        "id": 25, 
+        "type1": "electric", 
+        "type2": null, 
+        "stats": {
+            "hp": 35, 
+            "atk": 55, 
+            "def": 40, 
+            "sp-atk": 50,
+            "sp-def": 50, 
+            "spd": 90
+        }
+    }
+}
